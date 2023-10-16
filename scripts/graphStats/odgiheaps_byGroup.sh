@@ -1,13 +1,12 @@
 #!/bin/bash
 
-#SBATCH --mem=40g
+#SBATCH --mem=1g
 #SBATCH -o slurm-%x_%A.out  
-#SBATCH --cpus-per-task=8
 
 numPermutations=100
 graph=../../../minigraph_76lines_combinedGraph.og
 
-runs=( domesticatedLines wildLines )
+runs=( domesticatedLines wildLines allLines )
 for run in ${runs[*]}
 do
 	echo -e "\nrun = $run"
