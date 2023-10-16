@@ -2,7 +2,7 @@
 
 This repository contains scripts used for the construction and analysis of minigraph-based graphs for version 2 of the barley pan-genome. 
 
-Scripts are written in BASH and R and were developed and tested on Rocky Linux v8.8. Other Liunux distributions may be compatible but no testing has taken place in this regard. 
+Scripts are written in BASH and R and were developed and tested on Rocky Linux v8.8. Other Linux distributions may be compatible but no testing has taken place in this regard. 
 
 The scripts are organised as follows:
 
