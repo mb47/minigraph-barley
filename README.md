@@ -15,6 +15,7 @@ scripts/graphConstruction:
 scripts/SVstats:
 - extractSVCoordsByType.sh: extracts structural variant entries from the final BED files produced during graph construction/SV calling and separates them by type (simple inversions, deletions and insertions, but no nested complex variants)
 - violinPlot.r: takes the output from extractSVCoordsByType.sh and plots the length statistics of each SV category in a violin plot
+- SV_comparison.sh: extracts deletions and insertions from both Minigraph and Assemblytics SV files and feeds their coordinates to bedtools intersect for overlap comparison
 
 scripts/graphStats:
 - odgiheaps_byGroup.sh: runs odgi heaps command for each group (domesticated, wild and all lines) and then plots a saturation plot using script heaps_fit.R which is supplied with the odgi package
