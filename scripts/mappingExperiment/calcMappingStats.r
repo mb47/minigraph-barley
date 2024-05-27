@@ -15,7 +15,7 @@ str(castDF)
 # # mismatches
 # ===================
 # graph stats to compute (from GAM file):
-castDF$gam_pctReadsMapped <- (castDF$gam_Total_aligned / castDF$gam_Total_alignments)*100
+castDF$gam_pctReadsMapped <- (castDF$gam_Total_aligned / castDF$bam_raw_total_sequences)*100
 castDF$gam_pctPropPairReads <- (castDF$gam_Total_properly_paired / castDF$gam_Total_alignments) *100
 # bases mapped = (Total aligned * read length) - Softclips
 castDF$gam_basesMapped <- (castDF$gam_Total_aligned * castDF$bam_maximum_length) - castDF$gam_Softclips
@@ -34,5 +34,24 @@ castDF$bam_pctPropPairReads <- (castDF$bam_reads_properly_paired / castDF$bam_ra
 castDF$bam_errorRatePct <- (castDF$bam_mismatches / castDF$bam_bases_mapped_cigar)*100
 # # mismatches = castDF$bam_mismatches
 
+# ===================
+
+# additional stats to compute from linearised pan-genome graph and exact-match filtered BAM files 
+
+#LPGG_bam_pctReadsMapped
+castDF$LPGG_bam_pctReadsMapped <- (castDF$LPGG_bam_reads_mapped / castDF$bam_raw_total_sequences)*100
+
+#filteredLPGG_bam_pctReadsMapped
+castDF$filteredLPGG_bam_pctReadsMapped <- (castDF$filteredLPGG_bam_reads_mapped / castDF$bam_raw_total_sequences)*100
+
+#filtered_bam_pctReadsMapped
+castDF$filtered_bam_pctReadsMapped <- (castDF$filtered_bam_reads_mapped / castDF$bam_raw_total_sequences)*100
+
+#gam_pctPerfect
+castDF$gam_pctPerfect <- (castDF$gam_Total_perfect / castDF$bam_raw_total_sequences)*100
+
+str(castDF)
+
 #write data to tab delimited output file
 write.table(castDF,file="comparativeStats_mappingExpt_withComputedVars.txt",row.names = F,col.names = T,quote = F,sep='\t')
+
