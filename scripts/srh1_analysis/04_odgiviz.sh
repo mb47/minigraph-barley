@@ -15,7 +15,7 @@ odgi viz \
 --width=1000 \
 -i $prefix.opt.sorted.og \
 -o $prefix.png \
---paths-to-display pathsOrderedBySRH1Phenotype.txt
+--paths-to-display pathsOrderedBySRH1Phenotype_includeAll76.txt
 
 
 echo "done"
