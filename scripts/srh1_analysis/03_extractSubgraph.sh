@@ -10,7 +10,7 @@ xgFileWholeGraph=minigraph_76lines_combinedGraph.xg
 prefix=subgraph_srh1Region
 
 nodeRange="3177308:3177312"
-extendByNodeSteps=5
+extendByNodeSteps=6
 
 echo "activate vg"
 date
@@ -24,12 +24,6 @@ vg find \
 -c $extendByNodeSteps \
 -x $graphDir/$xgFileWholeGraph \
 > $prefix.vg
-
-echo "clip loose ends off graph"
-date
-vg mod \
--o $prefix.vg \
-> $prefix.mod.vg
 
 echo "convert graph from vg to gfa format"
 date
