@@ -26,5 +26,21 @@ scripts/mappingExperiment:
 - extractStats.sh: extracts and formats mapping statistics from each mapping for further analysis
 - calcMappingStats.r: takes the output from the preceding script and calculates comparative mapping statistics such as % reads mapped, % properly paired reads, etc. 
 
+scripts/mappingExperiment/linearisedGraph:
+- 00_gfa2fa.sh: converts separate GFA format graphs (one per chromosome) into FASTA files using gfatools gfa2fa
+- 01_concat.sh: combines the per-chromosome FASTA files
+- 02_indexBWA.sh: builds BWA index for mapping
+- 03_mapWGS.sh: array job for downloading and mapping of the five public WGS samples
+
+scripts/srh1_analysis:
+- 01_extractNodesToFASTA.sh: extracts all individual nodes from genome-wide graph to a FASTA file
+- 02_blastVsNodes.sh: BLASTs the srh1 enhancer region from cv. Barke against all 76 pan-genome accessions
+- 03_extractSubgraph.sh: extracts a smaller subgraph containing the nodes spanning the deletion and flanking regions
+- 04_odgiviz.sh: code for plotting the subgraph
+- 05_mapToGraph.sh: mapping of the eight core800 samples to the graph
+- 06_chunkGam.sh: extraction of a smaller portion of the GAM files produced in the previous step
+- 07_genotype.sh: genotyping of the srh1 region in the graph for the eight core800 samples
+
+
 Input data for graph construction was 76 barley genomes (approx. 5 gigabases each), split into separate chromosome input files each. Graph construction was carried out incrementally with minigraph on a per-chromosome basis and required 44-49 GB peak RAM and 10-22 days of wallclock time per subtask. Minigraph offers multithreading but this is effectively disabled when single, entire chromosome sequences are used as input (see https://github.com/lh3/minigraph/issues/62) and results in a single thread of execution for graph construction.
 
